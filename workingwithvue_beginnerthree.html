@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <!-- Tutorial from https://youtu.be/CYPZBK8zUik -->
+<head>
+<title></title>
+<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+<meta charset="utf-8">
+<script src="https://unpkg.com/vue@3.0.2"></script>
+<style>
+    .box{
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: #ddd;
+        margin: 20px;
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+<div id="app">
+    <!-- Mouse Events -->
+    <div class="box" @mouseover="handleEvent($event,5)">mouseover (enter)</div>
+    <div class="box" @mouseleave="handleEvent">mouseleave</div>
+    <div class="box" @dblclick="handleEvent">double click</div>
+    <div class="box" @mousemove="handleMousemove">position - {{x}}, {{y}}</div>
+</div>
+    <script>
+
+        const app = Vue.createApp({
+        //data, functions
+       
+        data(){
+            return{
+                showBooks: true,
+                title: 'The final empire',
+                auther: 'Brandon Sanderson',
+                age: 45,
+                x: 0,
+                y:0
+            }
+        },
+        methods: {
+        handleEvent(e, data){
+            console.log(e,e.type)
+                if(data){console.log(data)}
+        },
+        handleMousemove(e){
+            this.x = e.offsetX
+            this.y = e.offsetY
+        }
+        
+                }
+        })
+        
+        app.mount('#app')
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <!-- Tutorial from https://youtu.be/CYPZBK8zUik -->
+<head>
+<title></title>
+<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+<meta charset="utf-8">
+<script src="https://unpkg.com/vue@3.0.2"></script>
+
+
+</head>
+<body>
+    <h1>Working With Vue js #2</h1>
+    <!-- This div is controlled with Vue js -->
+    <div id="app">
+        <!-- Attribute binding use v-bind:attribute or see below -->
+            <a :href="url">Coolest cv ever</a><br/>
+
+        <div v-if="showBooks">
+        <ol>
+            <li v-for="book in books">
+                <h3>{{book.title}}</h3>
+                <p>{{book.auther}}</p>
+            </li>
+        </0l>
+     
+        <!--
+            v-on directive in Vue JS
+            v is Vue
+            on is on/click/hover/etc
+        -->
+
+     <!---   <button v-on:click="age++">Increase Age</button>
+        <button v-on:click="age--">Decrease Age</button> -->
+
+        <!-- @click/@hover is the same as v-on...just shorter syntax-->
+
+        <!--<div @click="changeTitle('Oathbringer')">Change book title</div>-->
+        </div>
+
+            <button @click="toggleShowBooks"><span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+            </button>
+        <div v-show="showBooks">Currently showing books</div>
+
+
+
+        </div>
+
+<script>
+
+const app = Vue.createApp({
+//data, functions
+//template: '<h2>I am the template</h2>'
+data(){
+    return{
+        url: 'http://cvofshekharmaharaj-mk01.herokuapp.com/',
+        showBooks: true,
+        //title: 'The final empire',
+        //auther: 'Brandon Sanderson',
+        //age: 45,
+        books:[
+            {title: 'name of the wind', author: 'patrick rothfus'},
+            {title: 'the way of kings', author: 'brandon sanderson'},
+            {title: 'teh final empire', author: 'patrick rothfus'}
+        ]
+    }
+},
+methods: {
+    changeTitle(title){
+    //this.title = 'Words of Randiance'
+    this.title = title
+    },
+
+    toggleShowBooks(){
+        this.showBooks = !this.showBooks
+    }
+
+        }
+})
+
+app.mount('#app')
+</script>
+
+</body>
+</html>
